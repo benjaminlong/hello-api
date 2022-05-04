@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = (
     environ.Path(__file__) - 2
 )  # (hello_api/config/settings.py - 2 = hello_api/)
-APPS_DIR = ROOT_DIR.path("apps")
+APPS_DIR = ROOT_DIR.path("hello_api")
 
 env = environ.Env()
 
@@ -82,8 +82,11 @@ ASFI_AAPLICATION = 'config.asgi.application'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        "DIRS": [
+            str(APPS_DIR.path("_app/templates")),
+            str(APPS_DIR.path("_templates"))
+        ],
+        "APP_DIRS": True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -148,7 +151,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_URL = 'static/'
 STATIC_ROOT = str(ROOT_DIR("staticfiles"))
-STATICFILES_DIRS = [str(APPS_DIR.path("_static"))]
+STATICFILES_DIRS = [
+    str(APPS_DIR.path("_static")),
+]
 
 
 # MEDIA

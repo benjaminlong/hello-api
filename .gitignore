@@ -4,3 +4,6 @@ staticfiles/
 .idea/
 .DS_Store
 venv/
+node_modules/
+
+hello_api/_static/dist

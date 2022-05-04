@@ -1,0 +1,86 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anonymous">
+    {% block head %}
+      <title>{% block head_title %}Hello API{% endblock %}</title>
+{#      <!-- <meta prefix="og: http://ogp.me/ns#" property="og:title" content="" /> -->#}
+{#      <!-- <meta prefix="og: http://ogp.me/ns#" property="og:description" content="" /> -->#}
+{#      <!-- <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="" /> -->#}
+{#      <!-- <meta prefix="og: http://ogp.me/ns#" property="og:image" content="" /> -->#}
+{#      <!-- <meta prefix="og: http://ogp.me/ns#" property="og:image" content="" /> -->#}
+{#      <!-- <meta prefix="og: http://ogp.me/ns#" property="og:image" content="" /> -->#}
+      <!-- <meta name="twitter:card" content="summary"> -->
+      <!--<meta name="twitter:site" content="">-->
+{#      <!-- <meta name="twitter:title" content=""> -->#}
+{#      <!-- <meta name="twitter:description" content=""> -->#}
+{#      <!-- <meta name="twitter:image" content=""> -->#}
+    {% endblock %}
+
+    {% block meta %}
+      <!-- blong: Turbolinks' cache might cause some troubles. You can opt-out with the following meta -->
+{#      <meta name="turbolinks-cache-control" content="no-cache">#}
+    {% endblock %}
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    {% block css %}
+      <!-- Your stuff: Third-party CSS libraries go here -->
+      <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">-->
+
+      <!-- This file stores project-specific CSS -->
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+      <link href="{% static 'dist/_tailwind.css' %}" rel="stylesheet">
+      <link href="{% static 'dist/app.css' %}" rel="stylesheet">
+    {% endblock %}
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- We don't placed js at the end of the document because we use Turbolinks -->
+    {% block javascript %}
+      <!-- Your stuff: Third-party javascript libraries go here -->
+      <!-- place project specific Javascript in this file -->
+      <script src="{% static 'dist/app.js' %}"></script>
+    {% endblock javascript %}
+
+  </head>
+
+  <body {% block bodyAttributes %}{% endblock %}>
+    {% csrf_token %}
+
+    {% block header %}
+    <a href="{% url 'home' %}" >Home</a>
+    <a href="{% url 'index' %}" >Index</a>
+    {% endblock %}
+
+    {% block bottom_fixed_nav %}
+      <nav class="nom-nav is-bottom-fixed"></nav>
+    {% endblock %}
+
+    {% block print %}
+      <div class="print-container"></div>
+    {% endblock %}
+
+    <div class="main-container relative">
+      {% if messages %}
+        {% include "components/messages.html" %}
+      {% endif %}
+
+      {% block modal %}{% endblock modal %}
+
+      {% block content %}{% endblock content %}
+
+    </div>
+
+  </body>
+</html>

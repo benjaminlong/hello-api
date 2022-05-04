@@ -1,0 +1,41 @@
+{
+  "name": "hello_api",
+  "version": "0.0.1",
+  "main": "",
+  "repository": "",
+  "author": "Benjamin Long <jiben2.swork@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:tailwind": "tailwindcss -c tailwind.config.js -i ./hello_api/_app/styles/tailwind.css -o ./hello_api/_static/dist/_tailwind.css",
+    "dev:app": "webpack --config webpack.dev.js",
+    "dev": "yarn dev:tailwind && yarn dev:app --watch",
+    "build:tailwind": "yarn dev:tailwind",
+    "build:app": "webpack --config webpack.prod.js",
+    "build": "NODE_ENV='production' yarn build:tailwind && yarn build:app"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@hotwired/turbo": "^7.1.0",
+    "tailwindcss": "2"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "autoprefixer": "^10.0.2",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "glob": "^8.0.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.2.14",
+    "postcss-loader": "^6.2.1",
+    "purgecss-webpack-plugin": "^4.1.3",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0",
+    "webpack-remove-empty-scripts": "^0.8.0"
+  }
+}

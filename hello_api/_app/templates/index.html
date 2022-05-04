@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Coucou Hello API</h1>
+
+<div data-controller="clipboard galery"
+     class="flex w-1/2 bg-green-300 hover:bg-green-500">
+  <input value="toto" class="hidden" data-clipboard-target="source"/>
+  <div class="bg-black-800 text-white"
+          data-action="click->clipboard#copy">
+    Copy
+  </div>
+  <div class="" data-action="click->galery#next">Next</div>
+</div>
+{% endblock %}

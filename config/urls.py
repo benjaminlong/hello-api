@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.views.debug import default_urlconf
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # API base url
-    path("", default_urlconf),
+    path("", TemplateView.as_view(template_name='home.html'), name="home"),
+    path("index/", TemplateView.as_view(template_name='index.html'), name='index'),
     path("api/", include("config.api_router", namespace="api")),
 ]
